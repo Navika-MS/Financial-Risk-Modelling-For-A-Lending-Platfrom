@@ -1,4 +1,4 @@
-# Financial-Risk-Analysis-For-A-Lending-Platfrom
+# Financial-Risk-Modelling-For-A-Lending-Platfrom
 ## **📊 Loan Default Prediction &amp; Financial Metrics Calculation 🚀**
 
 ## **📋Introduction**

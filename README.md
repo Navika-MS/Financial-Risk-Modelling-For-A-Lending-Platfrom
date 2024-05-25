@@ -1,7 +1,7 @@
 # Financial-Risk-Analysis-For-A-Lending-Platfrom
-**📊 Loan Default Prediction &amp; Financial Metrics Calculation 🚀**
+#**📊 Loan Default Prediction &amp; Financial Metrics Calculation 🚀**
 
-**📋Introduction**
+#**📋Introduction**
 
 In this project, we are undertaking credit risk modeling for peer-to-peer lending systems. The dataset encompasses a mix of both defaulted and non-defaulted loans spanning from 1st March 2009 to 27th January 2020. This dataset includes comprehensive demographic and financial information of borrowers, as well as detailed loan transaction records.
 

@@ -29,5 +29,6 @@ Development Environment: 📓 Jupyter Notebook
 Model Accuracy: High precision and recall, ensuring reliable predictions.
 Financial Calculations: Accurate EMI, ELA, and PROI computations for better financial planning.
 
-📜 License
+**📜 License**
+
 This project is licensed under the MIT License. See the LICENSE file for more details.

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bondora</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- bootstrap css -->
+    <!-- <link rel="stylesheet" type="text/css" href="/bootstrap.min.css"/> -->
+
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css"/> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+
+            background-color: rgb(239, 239, 240);
+
+        }
+
+        .form-info {
+            height: auto;
+            width: 1000px;
+            background-color: white;
+            margin-left: 230px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-shadow: 5px 3px 3px #80c0ee;
+            padding-top: 30px;
+
+
+        }
+
+        .btn-block {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #80c0ee;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #a3c2c2;
+        }
+        .header{
+            background-color: rgb(255, 255, 255);
+            height: 90px;
+            /* border: 3px solid #73AD21; */
+          
+            box-shadow: 5px 3px 3px #97dd2f;
+        }
+       
+        .right{
+            background-color: #ffffff;
+            display: table-cell;
+            padding-left: 290px;
+            
+            
+        }
+        .text{
+            font-size: 32px; 
+            font-weight: 700; 
+            font-family:sans-serif;
+            padding-top: 20px;
+            text-shadow: 1px 1px 1px #004aad;
+            
+        }
+
+        .info{
+            font-size: 20px;
+            font-weight: 200;
+            font-family: sans-serif;
+            padding-left: 240px;
+            padding-top: 25px;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    
+
+    <div class="header">
+        <div class="right">
+            <p class="text">Credit Risk Assessment for Bondora P2P Platform</p>
+
+        </div>
+    </div>
+        
+
+        <p class="info">
+            Kindly fill in the information
+        </p>
+
+
+
+    <!-- <br> -->
+    <div class="form-info">
+        <div class="col-md-9  offset-md-1">
+
+
+            <form action="{{ url_for('predict')}}" method="post">
+                <br>
+                <br>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label for="BidsportfolioManager">Bids portfolio Manager</label>
+                        <input title="The amount of investment offers made by Portfolio Managers" type="number" class="form-control" id="BidsportfolioManager"
+                            placeholder="Bids portfolio Manager" name="BidsportfolioManager" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="BidsApi">Bids Api</label>
+                        <input title="The amount of investment offers made via Api" type="number"  class="form-control" id="BidsApi" placeholder="Bids Api"
+                            name="BidsApi" required="required">
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="BidsManual">Bids Manual</label>
+                        <input title="The amount of investment offers made manually" type="number" class="form-control" id="BidsManual" placeholder="Bids Manual"
+                            name="BidsManual" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="NewCreditCustomer" class="control-label">New Credit Customer</label>
+                        <select title="Did the customer have prior credit history in Bondora or not" class="form-control" name="NewCreditCustomer">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Age">Age</label>
+                        <input title="The age of the borrower when signing the loan application" name="Age" type="number" class="form-control" id="Age" placeholder="Age" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="AppliedAmount">Applied Amount</label>
+                        <input title="The amount borrower applied for originally" type="number" step="0.01" class="form-control" id="AppliedAmount" placeholder="Applied Amount"
+                            name="AppliedAmount" required="required">
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Interest">Interest</label>
+                        <input title="Maximum interest rate accepted in the loan application" type="number" class="form-control" id="Interest" placeholder="Interest"
+                        max="100" step="0.01" accuracy="2" min="0" name="Interest" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="MonthlyPayment">Monthly Payment</label>
+                        <input title="Estimated amount the borrower has to pay every month" type="number" class="form-control" id="MonthlyPayment" placeholder="Monthly Payment"
+                        step="0.01" name="MonthlyPayment" required="required">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="IncomeTotal">Income Total</label>
+                        <input title="Borrower's total income" type="number" class="form-control" id="IncomeTotal" placeholder="Income Total"
+                        step="0.01" name="IncomeTotal" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ExistingLiabilities">Existing Liabilities</label>
+                        <input title="Borrower's number of existing liabilities" type="number" class="form-control" id="ExistingLiabilities"
+                            placeholder="Existing Liabilities" name="ExistingLiabilities" required="required">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="LiabilitiesTotal">Liabilities Total</label>
+                        <input title="Total monthly liabilities" type="number" class="form-control" id="LiabilitiesTotal" placeholder="Liabilities Total"
+                        step="0.01" name="LiabilitiesTotal" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="RefinanceLiabilities">Refinance Liabilities</label>
+                        <input title="The total amount of liabilities after refinancing" type="number" class="form-control" id="RefinanceLiabilities"
+                            placeholder="Refinance Liabilities" name="RefinanceLiabilities" required="required">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="DebtToIncome">Debt To Income</label>
+                        <input title="Ratio of borrower's monthly gross income that goes toward paying loans" type="number" class="form-control" id="DebtToIncome" placeholder="Debt To Income"
+                        step="0.01" max="100" accuracy="2" min="0" name="DebtToIncome" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="FreeCash">Free Cash</label>
+                        <input title="Discretionary income after monthly liabilities" type="number" class="form-control" id="FreeCash" placeholder="Free Cash"
+                        step="0.01" name="FreeCash" required="required">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Restructured" class="control-label">Restructured</label>
+                        <select title="The original maturity date of the loan has been increased by more than 60 days" class="form-control" name="Restructured">
+                            <option value="0">Unstructured</option>
+                            <option value="1">Structured</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="PrinciplePaymentMade">Principle Payment Made</label>
+                        <input title="Note owner received loan transfers principal amount"  type="number" class="form-control" id="PrinciplePaymentMade"
+                        step="0.01" name="PrinciplePaymentMade" placeholder="Principle Payment Made" required="required">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="InterestAndPenaltyPaymentsMade">Interest And Penalty Payments Made</label>
+                        <input title="Note owner received loan transfers earned interest, penalties total amount" type="number" class="form-control" id="InterestAndPenaltyPaymentsMade"
+                        step="0.01" name="InterestAndPenaltyPaymentsMade" placeholder="Interest And Penalty Payments Made" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="PrincipleBalance">Principle Balance</label>
+                        <input title="Principal that still needs to be paid by the borrower" type="number" class="form-control" id="PrincipleBalance" placeholder="Principle Balance"
+                        step="0.01" name="PrincipleBalance" required="required">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="InterestAndPenaltyBalance">Interest And Penalty Balance</label>
+                        <input title="Unpaid interest and penalties" type="number" class="form-control" id="InterestAndPenaltyBalance"
+                        step="0.01" placeholder="Interest And Penalty Balance" name="InterestAndPenaltyBalance" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="PreviousEarlyRepaymentsBeforeLoan">Previous Early Repayments Before Loan</label>
+                        <input title="How much was the early repayment amount before the loan" type="number" class="form-control" id="PreviousEarlyRepaymentsBeforeLoan"
+                        step="0.01" placeholder="Previous Early Repayments Before Loan" name="PreviousEarlyRepaymentsBeforeLoan" required="required">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="PreviousEarlyRepaymentsCountBeforeLoan">Previous Early Repayments Count Before
+                            Loan</label>
+                        <input title="How many times the borrower had repaid early" type="number" class="form-control" id="PreviousEarlyRepaymentsCountBeforeLoan"
+                        step="0.01" placeholder="Previous Early Repayments Count Before Loan" name="PreviousEarlyRepaymentsCountBeforeLoan" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="VerificationType" class="control-label">Verification Type</label>
+                        <select title="Select Method used for loan application data verification" class="form-control" name="VerificationType">
+                            <option value="None">Other</option>
+                            <option value="Income unverified">Income unverified (1)</option>
+                            <option value="Income unverified,cross-referenced by phone">Income
+                                unverified,cross-referenced by phone (2)</option>
+                            <option value="Income verified">Income verified (3)</option>
+                            <option value="Income and expenses verified">Income and expenses verified (4)</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="LanguageCode" class="control-label">Language Code</label>
+                        <select title="Select language code" class="form-control" name="LanguageCode" required>
+                            <option value="Estonian">Estonian</option>
+                            <option value="English">English</option>
+                            <option value="Russian">Russian</option>
+                            <option value="Finnish">Finnish</option>
+                            <option value="German">German</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Slovakian">Slovakian</option>
+                            <option value="Other">Other</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Gender" class="control-label">Gender</label>
+                        <select title="Select gender" class="form-control" name="Gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Woman">Female</option>
+                            <option value="None">Undefined</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label for="Country" class="control-label">Country</label>
+                        <select title="Select Residency of the borrower" class="form-control" name="Country" required>
+                            <option value="FI">FI</option>
+                            <option value="EE">EE</option>
+                            <option value="ES">ES</option>
+                            <option value="SK">SK</option>
+                            <option value="None">Other</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="UseOfLoan" class="control-label">Use Of Loan</label>
+                        <select title="Select use of loan" class="form-control" name="UseOfLoan" required>
+                            <option value="Loan consolidation">Loan consolidation (0)</option>
+                            <option value="Real estate">Real estate (1)</option>
+                            <option value="Home improvement">Home improvement (2)</option>
+                            <option value="Business">Business (3)</option>
+                            <option value="Education">Education (4)</option>
+                            <option value="Travel">Travel (5)</option>
+                            <option value="Vehicle">Vehicle (6)</option>
+                            <option value="Other">Other (7)</option>
+                            <option value="Health">Health (8)</option>
+                            <option value="Working capital financing">Working capital financing (101)</option>
+                            <option value="Purchase of machinery equipment">Purchase of machinery equipment (102)
+                            </option>
+                            <option value="Renovation of real estate">Renovation of real estate (103)</option>
+                            <option value="Accounts receivable financing">Accounts receivable financing (104)</option>
+                            <option value="Acquisition of means of transport">Acquisition of means of transport (105)
+                            </option>
+                            <option value="Construction finance">Construction finance (106)</option>
+                            <option value="Acquisition of stocks">Acquisition of stocks (107)</option>
+                            <option value="Acquisition of real estate">Acquisition of real estate (108)</option>
+                            <option value="Guaranteeing obligation">Guaranteeing obligation (109)</option>
+                            <option value="Other business">Other business (110)</option>
+                            <option value="None">None</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Education" class="control-label">Education</label>
+                        <select title="Select borrower's education" class="form-control" name="Education" required>
+                            <option value="Primary education">Primary education (1)</option>
+                            <option value="Basic education">Basic education (2)</option>
+                            <option value="Vocational education">Vocational education (3)</option>
+                            <option value="Secondary education">Secondary education (4)</option>
+                            <option value="Higher education">Higher education (5)</option>
+                            <option value="None">Other</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="MaritalStatus" class="control-label">Marital Status</label>
+                        <select title="Select marital status of borrower" class="form-control" name="MaritalStatus" required>
+                            <option value="Married">Married (1)</option>
+                            <option value="Cohabitant">Cohabitant (2)</option>
+                            <option value="Single">Single (3)</option>
+                            <option value="Divorced">Divorced (4)</option>
+                            <option value="Widow">Widow (5)</option>
+                            <option value="None">None</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="EmploymentStatus" class="control-label">Employment Status</label>
+                        <select title="Select employment status of borrower" class="form-control" name="EmploymentStatus" required>
+                            <option value="Unemployed">Unemployed (1)</option>
+                            <option value="Partially employed">Partially employed (2)</option>
+                            <option value="Fully employed">Fully employed (3)</option>
+                            <option value="Self-employed">Self-employed (4)</option>
+                            <option value="Entrepreneur">Entrepreneur (5)</option>
+                            <option value="Retiree">Retiree (6)</option>
+                            <option value="None">Other</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="EmploymentDurationCurrentEmployer" class="control-label">Employment Duration Current
+                            Employere</label>
+                        <select title=" Select Employment time with the current employer" class="form-control" name="EmploymentDurationCurrentEmployer" required>
+                            <option value="UpTo1Year">UpTo1Year</option>
+                            <option value="UpTo2Years">UpTo2Years</option>
+                            <option value="UpTo3Years">UpTo3Years</option>
+                            <option value="UpTo4Years">UpTo4Years</option>
+                            <option value="UpTo5Years">UpTo5Years</option>
+                            <option value="MoreThan5Years">MoreThan5Years</option>
+                            <option value="Retiree">Retiree</option>
+                            <option value="TrialPeriod">TrialPeriod</option>
+                            <option value="None">Other</option>
+                        </select>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="OccurpationArea" class="control-label">Occurpation Area</label>
+                        <select title="Select Occupation area of borrower" class="form-control" name="OccurpationArea" required>
+
+                            <option value="None">Other (1)</option>
+                            <option value="Mining">Mining (2)</option>
+                            <option value="Processing">Processing (3)</option>
+                            <option value="Energy">Energy (4)</option>
+                            <option value="Utilities">Utilities (5)</option>
+                            <option value="Construction">Construction (6)</option>
+                            <option value="Retail and wholesale">Retail and Wholesale (7)</option>
+                            <option value="Transport and warehousing">Transport and Warehousing (8)</option>
+                            <option value="Hospitality and catering">Hospitality and Catering (9)</option>
+                            <option value="Info and telecom">Info and Telecom (10)</option>
+                            <option value="Finance and insurance">Finance and Insurance (11)</option>
+                            <option value="Real-estate">Real-estate (12)</option>
+                            <option value="Research">Research (13)</option>
+                            <option value="Administrative">Administrative (14)</option>
+                            <option value="Civil service & military">Civil service & Military (15)</option>
+                            <option value="Education">Education (16)</option>
+                            <option value="Healthcare and social help">Healthcare and Social help (17)</option>
+                            <option value="Art and entertainment">Art and Entertainment (18)</option>
+                            <option value="Agriculture, forestry and fishing">Agriculture, Forestry and Fishing (19)
+                            </option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="HomeOwnershipType" class="control-label">Home Ownership Type</label>
+                        <select title="Select Home ownership type of borrower" class="form-control" name="HomeOwnershipType" required>
+                            <option value="Homeless">Homeless (0)</option>
+                            <option value="Owner">Owner (1)</option>
+                            <option value="Living with parents">Living with parents (2)</option>
+                            <option value="Tenant pre-furnished property">Tenant pre-furnished property (3)</option>
+                            <option value="Tenant unfurnished property">Tenant unfurnished property (4)</option>
+                            <option value="Council house">Council house (5)</option>
+                            <option value="Joint tenant">Joint tenant (6)</option>
+                            <option value="Joint ownership">Joint ownership (7)</option>
+                            <option value="Mortgage">Mortgage (8)</option>
+                            <option value="Owner with encumbrance">Owner with encumbrance (9)</option>
+                            <option value="None">Other (10)</option>
+
+                        </select>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Rating" class="control-label">Rating</label>
+                        <select title="Select Rating" class="form-control" name="Rating" required>
+                            <option value="AA">AA</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="HR">HR</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="CreditScoreEsMicroL" class="control-label">Credit Score Es MicroL</label>
+                        <select title="Select A score that is specifically designed for risk classifying subprime borrowers" class="form-control" name="CreditScoreEsMicroL" required>
+                            <option value="M">M</option>
+                            <option value="M1">M1</option>
+                            <option value="M2">M2</option>
+                            <option value="M3">M3</option>
+                            <option value="M4">M4</option>
+                            <option value="M5">M5</option>
+                            <option value="M6">M6</option>
+                            <option value="M7">M7</option>
+                            <option value="M8">M8</option>
+                            <option value="M9">M9</option>
+                            <option value="M10">M10</option>
+                            <option value="None">None</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="btn-block">
+                    <button type="submit"><a href="submit.html">Submit</a></button>
+
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>

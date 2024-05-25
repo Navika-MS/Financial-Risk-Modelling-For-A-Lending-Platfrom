@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bondora</title>
+
+
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(239, 239, 240);
+  
+  margin: 0;
+   padding: 0;
+    border: 0;
+     outline: 0;
+}
+
+.card {
+  width: 450px;
+  height: 300px;
+  transition: all 0.2s;
+  position: relative;
+  cursor: pointer;
+  background-color: white;
+ 
+}
+
+.card-inner {
+  width: inherit;
+  height: inherit;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card:hover {
+  transform: scale(1.04);
+}
+
+.circle1 {
+  width: 150px;
+  height: 150px;
+  /* background: radial-gradient(#b0e633, #53ef7d); */
+  background: radial-gradient(#b0eb56, #97dd2f);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle2 {
+  width: 150px;
+  height: 150px;
+  
+  background: radial-gradient(#b0daf8, #80c0ee);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle1:nth-child(1) {
+  top: -60px;
+  left: -60px;
+}
+
+.circle1:nth-child(2) {
+  bottom: -60px;
+  right: -60px;
+  animation-name: move-down1;
+}
+
+.circle2:nth-child(1) {
+  top: -60px;
+  left: -60px;
+}
+
+.circle2:nth-child(2) {
+  bottom: -60px;
+  right: -60px;
+  animation-name: move-down1;
+}
+
+.table{
+font-size: 20px;
+font-family: sans-serif;
+}
+
+
+
+.header{
+            background-color: rgb(255, 255, 255);
+            box-shadow: 5px 3px 3px #97dd2f;
+            
+        }
+        .right{
+            background-color: #ffffff;
+            display: table-cell;
+            padding-left: 290px;
+            padding-top: 20px;
+            
+            
+        }
+        .text{
+            font-size: 32px; 
+            font-weight: 700; 
+            font-family:sans-serif;
+            /* padding-top: 17px; */
+            padding-bottom: 20px;
+            text-shadow: 1px 1px 1px #004aad;
+            
+        }
+
+
+        .btn-block {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #80c0ee;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #a3c2c2;
+        }
+
+.main
+{
+
+width:100%;
+height:100%
+
+}           
+.one{
+    height: 10%;
+    vertical-align: top;
+}
+.two{
+    height: 65%;
+    
+    align-self:center;
+    align-items: center;
+    align-content: center;
+    padding-top: 80px;
+    padding-left: 520px;
+}
+.three{
+    padding-bottom: 0px;
+    padding-top: 0px;
+    height: 5%;
+    vertical-align: bottom;
+}
+
+@keyframes move-up6 {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move-down1 {
+  to {
+    transform: translateY(10px);
+  }
+}
+
+    </style>
+
+
+</head>
+<body>
+    <div class="main">
+    <div class="one">
+    <div class="header">
+        
+        <div class="right">
+            <p class="text">Credit Risk Assessment for Bondora P2P Platform</p>
+
+        </div>
+    </div>
+    </div>
+
+<div class="two">
+    <div class="card">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="card-inner">
+            
+            <table class="table">
+                <tr>
+                    <td>
+                        Assesment Result ...
+                        <br>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Will this borrower probably default? {{ n[0] }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Equaty Monthly Installments (EMI) =  {{ n[1] }}
+                    </td> 
+                </tr>
+                <tr>
+                    <td>
+                        Eligible Loan Amount (ELA) =  {{ n[2] }}
+                    </td> 
+                </tr>
+                <tr>
+                    <td>
+                        Preferred ROI (Return on Investement) = {{ n[3] }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Loan Tenure =  {{ n[4] }} 
+                    </td>
+                </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+<div class="three">
+      <div class="btn-block">
+        <button type="submit"><a href="index.html">Home</a></button>
+
+    </div>
+</div>
+</div>
+</body>
+</html>
